@@ -1,4 +1,6 @@
-# godot-engine.godot-stories
+<img src="addons/twitter_status/icon.png" align="left" width="64" height="64">
+
+# Godot Stories
 Godot Engine's stories using Twitter API, fetching everything with #GodotEngine. From a meme to an actually working thing.
 
 Inspired by [this tweet](https://twitter.com/LucyLavend/status/1330114296433479680), shoutout to [@LucyLavend](https://twitter.com/LucyLavend)
