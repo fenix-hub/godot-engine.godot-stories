@@ -1,0 +1,126 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/twitter_status/twitter_dock/twitter_dock.gd" type="Script" id=1]
+[ext_resource path="res://addons/twitter_status/tweet_display/tweet_display.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/twitter_status/resources/img/settings.png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+
+[node name="Recent Tweets" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RecentTweets" type="ScrollContainer" parent="Container"]
+margin_right = 1004.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 100, 100 )
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/bg = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TwitterStatus" type="HBoxContainer" parent="Container/RecentTweets"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 999.0
+margin_bottom = 595.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Settings" type="TextureButton" parent="Container"]
+margin_left = 1008.0
+margin_right = 1024.0
+margin_bottom = 600.0
+texture_normal = ExtResource( 3 )
+
+[node name="TweetDisplay" parent="." instance=ExtResource( 2 )]
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="SettingsPanel" type="WindowDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -215.0
+margin_top = -56.0
+margin_right = 215.0
+margin_bottom = 55.0
+
+[node name="Container" type="VBoxContainer" parent="SettingsPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 1.0
+margin_right = -4.0
+margin_bottom = -1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SettingsPanel/Container"]
+margin_right = 421.0
+margin_bottom = 14.0
+text = "Plugin Settings"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="SettingsPanel/Container"]
+margin_top = 18.0
+margin_right = 421.0
+margin_bottom = 22.0
+
+[node name="TokenContainer" type="HBoxContainer" parent="SettingsPanel/Container"]
+margin_top = 26.0
+margin_right = 421.0
+margin_bottom = 50.0
+
+[node name="Label" type="Label" parent="SettingsPanel/Container/TokenContainer"]
+margin_top = 5.0
+margin_right = 124.0
+margin_bottom = 19.0
+text = "Twitter Auth Token:"
+
+[node name="Token" type="LineEdit" parent="SettingsPanel/Container/TokenContainer"]
+margin_left = 128.0
+margin_right = 421.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="ButtonContainer" type="HBoxContainer" parent="SettingsPanel/Container"]
+margin_top = 89.0
+margin_right = 421.0
+margin_bottom = 109.0
+size_flags_vertical = 10
+
+[node name="Close" type="Button" parent="SettingsPanel/Container/ButtonContainer"]
+margin_right = 47.0
+margin_bottom = 20.0
+text = "Close"
+
+[node name="Accept" type="Button" parent="SettingsPanel/Container/ButtonContainer"]
+margin_left = 365.0
+margin_right = 421.0
+margin_bottom = 20.0
+size_flags_horizontal = 10
+text = "Accept"

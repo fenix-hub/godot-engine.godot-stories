@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://addons/twitter_status/twitter_tweet/twitter_tweet.gd" type="Script" id=1]
+[ext_resource path="res://addons/twitter_status/resources/shaders/round_avatar.tres" type="Material" id=2]
+[ext_resource path="res://addons/twitter_status/resources/img/circle.png" type="Texture" id=3]
+[ext_resource path="res://addons/twitter_status/resources/img/circle2_on.png" type="Texture" id=4]
+[ext_resource path="res://addons/twitter_status/resources/shaders/lerp_shader.tres" type="Material" id=5]
+
+[node name="TwitterTweet" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvatarContainer" type="CenterContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 75, 75 )
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Avatar" type="TextureRect" parent="AvatarContainer"]
+material = ExtResource( 2 )
+margin_left = 482.0
+margin_top = 270.0
+margin_right = 542.0
+margin_bottom = 330.0
+rect_min_size = Vector2( 60, 60 )
+mouse_filter = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Status" type="TextureRect" parent="AvatarContainer/Avatar"]
+material = ExtResource( 5 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -35.0
+margin_top = -35.0
+margin_right = 35.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 70, 70 )
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="."]
+visible = false
+margin_top = 75.0
+margin_right = 1024.0
+margin_bottom = 89.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "user"
+align = 1
+
+[node name="Avatar" type="HTTPRequest" parent="."]
+download_chunk_size = 40960
+use_threads = true
+
+[node name="Preview" type="HTTPRequest" parent="."]
+download_chunk_size = 40960
+use_threads = true

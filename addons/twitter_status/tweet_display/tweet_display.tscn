@@ -1,0 +1,130 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/twitter_status/tweet_display/tweet_display.gd" type="Script" id=1]
+[ext_resource path="res://addons/twitter_status/resources/shaders/round_avatar.tres" type="Material" id=2]
+[ext_resource path="res://addons/twitter_status/resources/img/circle.png" type="Texture" id=3]
+
+[node name="TweetDisplay" type="WindowDialog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -400.0
+margin_top = -300.0
+margin_right = 400.0
+margin_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 640, 300 )
+resizable = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 9.0
+margin_right = -8.0
+margin_bottom = -10.0
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tweet" type="VBoxContainer" parent="Container"]
+margin_right = 784.0
+margin_bottom = 581.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="User" type="HBoxContainer" parent="Container/Tweet"]
+margin_right = 784.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_constants/separation = 5
+
+[node name="Avatar" type="TextureRect" parent="Container/Tweet/User"]
+material = ExtResource( 2 )
+margin_right = 65.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 65, 65 )
+size_flags_vertical = 0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="Data" type="VBoxContainer" parent="Container/Tweet/User"]
+margin_left = 70.0
+margin_right = 146.0
+margin_bottom = 65.0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/Tweet/User/Data"]
+margin_top = 16.0
+margin_right = 62.0
+margin_bottom = 31.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 0
+
+[node name="Name" type="LinkButton" parent="Container/Tweet/User/Data/HBoxContainer"]
+margin_right = 28.0
+margin_bottom = 14.0
+size_flags_vertical = 4
+text = "user"
+
+[node name="Label" type="Label" parent="Container/Tweet/User/Data/HBoxContainer"]
+margin_left = 28.0
+margin_right = 32.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_vertical = 3
+text = "·"
+
+[node name="Time" type="Label" parent="Container/Tweet/User/Data/HBoxContainer"]
+margin_left = 32.0
+margin_right = 62.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_vertical = 3
+text = "time"
+
+[node name="Username" type="Label" parent="Container/Tweet/User/Data"]
+margin_top = 35.0
+margin_right = 76.0
+margin_bottom = 49.0
+custom_colors/font_color = Color( 0.494118, 0.494118, 0.494118, 1 )
+text = "@username"
+
+[node name="Url" type="LinkButton" parent="Container/Tweet/User"]
+margin_left = 685.0
+margin_right = 784.0
+margin_bottom = 14.0
+size_flags_horizontal = 10
+size_flags_vertical = 2
+custom_colors/font_color = Color( 0.0627451, 0.67451, 1, 1 )
+text = "Open in Twitter"
+
+[node name="Text" type="RichTextLabel" parent="Container/Tweet"]
+margin_top = 75.0
+margin_right = 784.0
+margin_bottom = 90.0
+focus_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content_height = true
+scroll_active = false
+selection_enabled = true
+
+[node name="Preview" type="TextureRect" parent="Container/Tweet"]
+margin_top = 100.0
+margin_right = 784.0
+margin_bottom = 581.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+stretch_mode = 6
